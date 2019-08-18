@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
-import PropTypes from 'prop-types';
 import Icon from '../images/icon.jpg';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -11,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { relative } from 'path';
 
 const styles= {
     form: {
@@ -62,6 +60,7 @@ class Login extends Component {
 
         axios.post('/login', loginAttempt)
             .then(res => {
+                localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
                 console.log(res)
                 this.setState({
                     loading: false
@@ -102,7 +101,7 @@ class Login extends Component {
                         <Button type="submit" variant="contained" color="primary" className={classes.button}>
                             Login
                             {loading && (
-                            <CircularProgress className={classes.progress} size={30} color="light"/>
+                            <CircularProgress className={classes.progress} size={30}/>
                             )}
                         </Button>
                     </form>
