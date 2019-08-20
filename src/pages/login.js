@@ -62,7 +62,7 @@ class Login extends Component {
 
         axios.post('/login', loginAttempt)
             .then(res => {
-                console.log(res)
+                localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
                 this.setState({
                     loading: false
                 });
@@ -102,7 +102,7 @@ class Login extends Component {
                         <Button type="submit" variant="contained" color="primary" className={classes.button}>
                             Login
                             {loading && (
-                            <CircularProgress className={classes.progress} size={30} color="light"/>
+                            <CircularProgress className={classes.progress} size={30}/>
                             )}
                         </Button>
                     </form>
