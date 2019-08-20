@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 //MUI stuff
 
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
@@ -31,7 +29,7 @@ class Listing extends Component {
 
     render() {
         dayjs.extend(relativeTime);
-        const { classes, listing: { body, userHandle, userImage, createdAt, listingId } } = this.props;
+        const { classes, listing: { body, userHandle, userImage, createdAt } } = this.props;
         return (
             <Card className={classes.card}>
                 <CardMedia 
